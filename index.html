@@ -3,46 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baby Boy's Birthday Celebration</title>
-    <style>
-        body { background-color: #E0F7FA; color: #000; font-family: 'Arial', sans-serif; }
-        .container { text-align: center; padding: 20px; }
-        .animated-balloons { position: relative; }
-        .gift-box { animation: spin 5s infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
+    <title>Happy Birthday Sid</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1>Happy Birthday!</h1>
-        <div class="animated-balloons">
-            <!-- Animated floating balloons code here -->
+        <h1 class="title">Happy Birthday SID!</h1>
+        <div class="photo-upload">
+            <h2>Upload Your Photos</h2>
+            <div class="drop-area" id="drop-area">
+                <p>Drag and drop photos here or click to upload.</p>
+                <input type="file" id="fileElem" multiple accept="image/*" style="display:none">
+            </div>
         </div>
-        <div class="gift-box">
-            <!-- Spinning 3D gift box code here -->
+        <div class="gallery">
+            <h2>Photo Gallery</h2>
+            <div class="photo-grid" id="photo-grid">
+                <!-- Gallery items will be injected here -->
+            </div>
         </div>
-        <div class="mascots">
-            <img src="cartoon_bear.png" alt="Cute Cartoon Bear" />
-            <img src="cartoon_bunny.png" alt="Cute Cartoon Bunny" />
-        </div>
-        <h2>Birthday Cake Animation 🎂</h2>
-        <div class="confetti">
-            <!-- Confetti with emojis code here -->
-        </div>
-        <div class="stars">
-            <!-- Twinkling stars animation code here -->
-        </div>
-        <div class="music">
-            <!-- Musical notes animation code here -->
-        </div>
-        <form>
-            <label for="wishes">Your Birthday Wishes:</label>
-            <input type="text" id="wishes" name="wishes" />
-            <button type="submit">Send</button>
-        </form>
-        <div id="wishes-display">
-            <!-- Real-time display of wishes code here -->
+        <div class="carousel" id="carousel">
+            <button class="prev" id="prev">&#10094;</button>
+            <div class="carousel-inner" id="carousel-inner">
+                <!-- Carousel items will be injected here -->
+            </div>
+            <button class="next" id="next">&#10095;</button>
+            <div class="counter" id="counter">1/0</div>
         </div>
     </div>
+    <div class="balloons"></div>
+    <div class="confetti"></div>
 </body>
 </html>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f0f8ff;
+}
+.container {
+    text-align: center;
+    padding: 50px;
+}
+.title {
+    font-size: 50px;
+    color: #ff69b4;
+    animation: bounce 0.5s infinite alternate, glow 1s infinite alternate;
+}
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4; }
+    100% { text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4; }
+}
+.photo-upload {
+    margin: 20px auto;
+}
+.drop-area {
+    border: 2px dashed #ff69b4;
+    padding: 20px;
+    cursor: pointer;
+}
+.gallery, .carousel {
+    margin: 20px 0;
+}
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+.carousel-inner {
+    display: flex;
+    overflow: hidden;
+}
+.carousel-inner img {
+    width: 100%;
+}
+.balloons {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+.confetti {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+</style>
+
+<script>
+// JavaScript for dragging and dropping photos
+const dropArea = document.getElementById('drop-area');
+const fileElem = document.getElementById('fileElem');
+const photoGrid = document.getElementById('photo-grid');
+const carouselInner = document.getElementById('carousel-inner');
+const counter = document.getElementById('counter');
+
+let photos = [];
+
+dropArea.addEventListener('click', () => fileElem.click());
+
+fileElem.addEventListener('change', handleFiles);
+
+dropArea.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    dropArea.classList.add('highlight');
+});
+
+dropArea.addEventListener('dragleave', () => dropArea.classList.remove('highlight'));
+
+dropArea.addEventListener('drop', (event) => {
+    event.preventDefault();
+    dropArea.classList.remove('highlight');
+    handleFiles(event.dataTransfer.files);
+});
+
+function handleFiles(files) {
+    const fileArray = Array.from(files);
+    fileArray.forEach(file => {
+        if (!photos.includes(file.name)) {
+            photos.push(file.name);
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            img.alt = file.name;
+            const imgDiv = document.createElement('div');
+            imgDiv.classList.add('gallery-item');
+            imgDiv.appendChild(img);
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerText = 'Delete';
+            deleteBtn.onclick = () => {
+                photoGrid.removeChild(imgDiv);
+                photos = photos.filter(photo => photo !== file.name);
+            };
+            imgDiv.appendChild(deleteBtn);
+            photoGrid.appendChild(imgDiv);
+            updateCarousel();
+        }
+    });
+}
+
+function updateCarousel() {
+    carouselInner.innerHTML = '';
+    // Add images to carousel
+    photos.forEach((photo, index) => {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(photo);
+        carouselInner.appendChild(img);
+    });
+    counter.innerText = `1/${photos.length}`;
+}
+
+let currentIndex = 0;
+const autoPlay = setInterval(() => {
+    if (photos.length) {
+        currentIndex = (currentIndex + 1) % photos.length;
+        updateCarouselDisplay();
+    }
+}, 4000);
+
+function updateCarouselDisplay() {
+    const imgs = carouselInner.getElementsByTagName('img');
+    for (let img of imgs) {
+        img.style.display = 'none';
+    }
+    imgs[currentIndex].style.display = 'block';
+    counter.innerText = `${currentIndex + 1}/${photos.length}`;
+}
+
+document.getElementById('prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+    updateCarouselDisplay();
+});
+
+document.getElementById('next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % photos.length;
+    updateCarouselDisplay();
+});
+</script>
