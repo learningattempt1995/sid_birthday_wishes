@@ -3,280 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Wishes</title>
+    <title>Baby Boy's Birthday Celebration</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 2.5em;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            font-family: 'Arial', sans-serif;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .wishes-section {
-            margin-top: 40px;
-        }
-
-        .wishes-title {
-            font-size: 1.5em;
-            color: #333;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .wishes-container {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .wish-card {
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .wish-name {
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
-
-        .wish-text {
-            color: #555;
-            line-height: 1.5;
-        }
-
-        .empty-message {
-            text-align: center;
-            color: #999;
-            padding: 30px 20px;
-            font-style: italic;
-        }
-
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #667eea;
-            pointer-events: none;
-            animation: fall linear;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .subtitle {
-                font-size: 0.95em;
-            }
-        }
+        body { background-color: #E0F7FA; color: #000; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; padding: 20px; }
+        .animated-balloons { position: relative; }
+        .gift-box { animation: spin 5s infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎉 Birthday Wishes 🎂</h1>
-        <p class="subtitle">Share your wishes and celebrate together!</p>
-
-        <form id="wishForm">
-            <div class="form-group">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="wish">Your Wish:</label>
-                <textarea id="wish" placeholder="Write your birthday wish here..." required></textarea>
-            </div>
-
-            <button type="submit">Send Birthday Wish 🎈</button>
+        <h1>Happy Birthday!</h1>
+        <div class="animated-balloons">
+            <!-- Animated floating balloons code here -->
+        </div>
+        <div class="gift-box">
+            <!-- Spinning 3D gift box code here -->
+        </div>
+        <div class="mascots">
+            <img src="cartoon_bear.png" alt="Cute Cartoon Bear" />
+            <img src="cartoon_bunny.png" alt="Cute Cartoon Bunny" />
+        </div>
+        <h2>Birthday Cake Animation 🎂</h2>
+        <div class="confetti">
+            <!-- Confetti with emojis code here -->
+        </div>
+        <div class="stars">
+            <!-- Twinkling stars animation code here -->
+        </div>
+        <div class="music">
+            <!-- Musical notes animation code here -->
+        </div>
+        <form>
+            <label for="wishes">Your Birthday Wishes:</label>
+            <input type="text" id="wishes" name="wishes" />
+            <button type="submit">Send</button>
         </form>
-
-        <div class="wishes-section">
-            <h2 class="wishes-title">✨ All Wishes ✨</h2>
-            <div class="wishes-container" id="wishesContainer">
-                <p class="empty-message">No wishes yet. Be the first to share! 💌</p>
-            </div>
+        <div id="wishes-display">
+            <!-- Real-time display of wishes code here -->
         </div>
     </div>
-
-    <script>
-        // Load wishes from localStorage
-        function loadWishes() {
-            const wishes = JSON.parse(localStorage.getItem('wishes')) || [];
-            displayWishes(wishes);
-        }
-
-        // Save wishes to localStorage
-        function saveWishes(wishes) {
-            localStorage.setItem('wishes', JSON.stringify(wishes));
-        }
-
-        // Display wishes
-        function displayWishes(wishes) {
-            const container = document.getElementById('wishesContainer');
-            
-            if (wishes.length === 0) {
-                container.innerHTML = '<p class="empty-message">No wishes yet. Be the first to share! 💌</p>';
-                return;
-            }
-
-            container.innerHTML = wishes.map(wish => `
-                <div class="wish-card">
-                    <div class="wish-name">From: ${wish.name}</div>
-                    <div class="wish-text">${wish.text}</div>
-                </div>
-            `).join('');
-        }
-
-        // Handle form submission
-        document.getElementById('wishForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const wish = document.getElementById('wish').value;
-
-            if (name.trim() && wish.trim()) {
-                const wishes = JSON.parse(localStorage.getItem('wishes')) || [];
-                wishes.unshift({ name, text: wish });
-                saveWishes(wishes);
-                displayWishes(wishes);
-
-                // Clear form
-                this.reset();
-
-                // Create confetti
-                createConfetti();
-            }
-        });
-
-        // Create confetti animation
-        function createConfetti() {
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * window.innerWidth + 'px';
-                confetti.style.backgroundColor = ['#667eea', '#764ba2', '#f093fb', '#4facfe'][Math.floor(Math.random() * 4)];
-                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                document.body.appendChild(confetti);
-
-                setTimeout(() => confetti.remove(), 5000);
-            }
-        }
-
-        // Load wishes on page load
-        window.addEventListener('load', loadWishes);
-    </script>
 </body>
 </html>
